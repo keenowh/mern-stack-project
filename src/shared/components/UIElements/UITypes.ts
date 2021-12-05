@@ -13,3 +13,12 @@ export interface CardTypes {
     style?: {};
     children: React.ReactNode;
 }
+
+export interface BackdropTypes {
+    onClick?: () => void;
+}
+
+export interface SideDrawerTypes {
+    show: boolean;
+    onClick: () => void;
+}
