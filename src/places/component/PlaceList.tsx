@@ -4,13 +4,14 @@ import Card from "../../shared/components/UIElements/Card";
 import "./PlaceList.css";
 import { PlaceItems } from "../PlacesTypes";
 import PlaceItem from "./PlaceItem";
+import Button from "../../shared/components/FormElement/Button";
 const PlaceList: React.FC<PlaceItems> = (props) => {
     if (props.items.length === 0) {
         return (
             <div className="center place-list">
                 <Card>
                     <h2>No places found. Maybe create one?</h2>
-                    <button>Share Place</button>
+                    <Button>Share Place</Button>
                 </Card>
             </div>
         );

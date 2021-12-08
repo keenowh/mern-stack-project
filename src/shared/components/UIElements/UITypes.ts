@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 export interface AvatarTypes {
     className?: string;
@@ -21,4 +21,20 @@ export interface BackdropTypes {
 export interface SideDrawerTypes {
     show: boolean;
     onClick: () => void;
+}
+
+export interface ModalOverlayTypes {
+    className?: string;
+    style?: CSSProperties | undefined;
+    header: string;
+    contentClass: string;
+    onSubmit?: () => void;
+    headerClass?: string;
+    footerClass: string;
+    footer: JSX.Element;
+}
+
+export interface MainModalTypes extends ModalOverlayTypes {
+    show: boolean;
+    onCancel: () => void;
 }
