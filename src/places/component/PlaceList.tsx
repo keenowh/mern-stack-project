@@ -11,7 +11,7 @@ const PlaceList: React.FC<PlaceItems> = (props) => {
             <div className="center place-list">
                 <Card>
                     <h2>No places found. Maybe create one?</h2>
-                    <Button>Share Place</Button>
+                    <Button to="/places/new">Share Place</Button>
                 </Card>
             </div>
         );

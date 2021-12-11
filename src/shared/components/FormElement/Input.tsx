@@ -4,7 +4,11 @@ import { InputTypes } from "./FormElementTypes";
 import "./Input.css";
 
 const inputReducer = (
-    state: { value: string; isValid: boolean; isTouched?: boolean },
+    state: {
+        value: string;
+        isValid: boolean;
+        isTouched: boolean;
+    },
     action: {
         type: string;
         val: string;
@@ -32,9 +36,9 @@ const inputReducer = (
 
 const Input: React.FC<InputTypes> = (props) => {
     const [inputState, dispatch] = useReducer(inputReducer, {
-        value: "",
+        value: props.initialValue || "",
         isTouched: false,
-        isValid: false,
+        isValid: props.initialValid || false,
     });
 
     const { id, onInput } = props;
@@ -52,6 +56,13 @@ const Input: React.FC<InputTypes> = (props) => {
         });
     };
 
+    const touchHandler = () => {
+        dispatch({
+            type: "TOUCH",
+            val: "",
+        });
+    };
+
     const element =
         props.element === "input" ? (
             <input
@@ -59,6 +70,7 @@ const Input: React.FC<InputTypes> = (props) => {
                 type={props.type}
                 placeholder={props.placeholder}
                 onChange={changeHandler}
+                onBlur={touchHandler}
                 value={inputState.value}
             />
         ) : (
@@ -66,6 +78,7 @@ const Input: React.FC<InputTypes> = (props) => {
                 id={props.id}
                 rows={props.rows || 3}
                 onChange={changeHandler}
+                onBlur={touchHandler}
                 value={inputState.value}
             />
         );
@@ -78,7 +91,7 @@ const Input: React.FC<InputTypes> = (props) => {
                 "form-control--invalid"
             }`}
         >
-            <label htmlFor="props.id">{props.label}</label>
+            <label htmlFor={props.id}>{props.label}</label>
             {element}
             {!inputState.isValid && inputState.isTouched && (
                 <p>{props.errorText}</p>

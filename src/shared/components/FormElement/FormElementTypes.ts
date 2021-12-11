@@ -1,5 +1,5 @@
 export interface InputTypes {
-    element: string;
+    element: "input" | "textarea";
     id: string | undefined;
     type?: string;
     placeholder?: string;
@@ -7,5 +7,7 @@ export interface InputTypes {
     label?: string;
     errorText?: string;
     validators: { type: string }[];
+    initialValue?: string;
+    initialValid?: boolean;
     onInput: (id: string | undefined, value: string, isValid: boolean) => void;
 }

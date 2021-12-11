@@ -27,7 +27,7 @@ export interface ModalOverlayTypes {
     className?: string;
     style?: CSSProperties | undefined;
     header: string;
-    contentClass: string;
+    contentClass?: string;
     onSubmit?: () => void;
     headerClass?: string;
     footerClass: string;
