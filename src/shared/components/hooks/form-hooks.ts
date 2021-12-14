@@ -33,6 +33,9 @@ const formReducer: Reducer<FormReducerStateTypes, FormAction> = (
         case FormActionType.INPUT_CHANGE:
             let formIsValid: boolean | undefined = true;
             for (const inputId in state.inputs) {
+                if (!state.inputs[inputId].isValid) {
+                    continue;
+                }
                 if (inputId === action.inputId) {
                     formIsValid = formIsValid && action.isValid;
                 } else {
